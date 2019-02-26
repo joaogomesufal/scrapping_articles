@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-import os
 
 # 1 - Importação das Dependencias 
 import requests
 from bs4 import BeautifulSoup
 import wget
+import os
 
 # 2 - Iniciação do BeautifulSoup
 def getArticlesInList(url_list):

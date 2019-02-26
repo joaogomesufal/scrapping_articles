@@ -1,0 +1,2839 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Occupancy schedules learning process through a data mining framework (Journal Article) | DOE PAGES</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<link rel="canonical" href="https://www.osti.gov/pages/biblio/1253720-occupancy-schedules-learning-process-through-data-mining-framework" /><link rel="search" type="application/opensearchdescription+xml" href="/pages/res/pagessearch.xml" title="DOE PAGES Search" />
+		<style>
+			html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+}
+
+h1 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+img {
+  border: 0;
+}
+
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+button,
+input,
+select {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input {
+  line-height: normal;
+}
+
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('/pages/fonts/glyphicons-halflings-regular.eot');
+  src: url('/pages/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),url('/pages/fonts/glyphicons-halflings-regular.woff2') format('woff2'),url('/pages/fonts/glyphicons-halflings-regular.woff') format('woff'),url('/pages/fonts/glyphicons-halflings-regular.ttf') format('truetype'),url('/pages/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.glyphicon-search:before {
+  content: "\e003";
+}
+
+.glyphicon-filter:before {
+  content: "\e138";
+}
+
+.glyphicon-menu-right:before {
+  content: "\e258";
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+.lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+@media (min-width:768px) {
+  .lead {
+    font-size: 21px;
+  }
+}
+
+small,
+.small {
+  font-size: 85%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #666;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ul ul {
+  margin-bottom: 0;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width:768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width:992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width:1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-sm-4,
+.col-md-4,
+.col-sm-6,
+.col-sm-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-12,
+.col-sm-12,
+.col-md-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-xs-3,
+.col-xs-9,
+.col-xs-12 {
+  float: left;
+}
+
+.col-xs-12 {
+  width: 100%;
+}
+
+.col-xs-9 {
+  width: 75%;
+}
+
+.col-xs-3 {
+  width: 25%;
+}
+
+@media (min-width:768px) {
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-6,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-12 {
+    float: left;
+  }
+
+  .col-sm-12 {
+    width: 100%;
+  }
+
+  .col-sm-9 {
+    width: 75%;
+  }
+
+  .col-sm-8 {
+    width: 66.66666667%;
+  }
+
+  .col-sm-6 {
+    width: 50%;
+  }
+
+  .col-sm-4 {
+    width: 33.33333333%;
+  }
+
+  .col-sm-3 {
+    width: 25%;
+  }
+}
+
+@media (min-width:992px) {
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-9,
+  .col-md-12 {
+    float: left;
+  }
+
+  .col-md-12 {
+    width: 100%;
+  }
+
+  .col-md-9 {
+    width: 75%;
+  }
+
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+
+  .col-md-3 {
+    width: 25%;
+  }
+
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+}
+
+@media (min-width:1200px) {
+  .col-lg-3,
+  .col-lg-9 {
+    float: left;
+  }
+
+  .col-lg-9 {
+    width: 75%;
+  }
+
+  .col-lg-3 {
+    width: 25%;
+  }
+}
+
+table {
+  background-color: transparent;
+}
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="radio"] {
+  margin: 4px 0 0;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #999;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+
+.form-control::-ms-expand {
+  background-color: transparent;
+  border: 0;
+}
+
+.input-sm {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+select.input-sm {
+  height: 30px;
+  line-height: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.btn.disabled {
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  opacity: .65;
+}
+
+
+
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+}
+
+.fade {
+  opacity: 0;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.collapse {
+  display: none;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+
+.dropdown-menu>li>a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+
+.btn-group {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-group>.btn {
+  position: relative;
+  float: left;
+}
+
+.btn-group .btn+.btn {
+  margin-left: -1px;
+}
+
+.btn-group>.btn:first-child {
+  margin-left: 0;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group>.btn:last-child:not(:first-child),
+.btn-group>.dropdown-toggle:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-group>.btn+.dropdown-toggle {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.btn .caret {
+  margin-left: 0;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group .form-control {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
+}
+
+.input-group .form-control:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.input-group-btn:last-child>.btn,
+.input-group-btn:last-child>.btn-group>.btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group-btn {
+  position: relative;
+  font-size: 0;
+  white-space: nowrap;
+}
+
+.input-group-btn>.btn {
+  position: relative;
+}
+
+.input-group-btn:last-child>.btn,
+.input-group-btn:last-child>.btn-group {
+  z-index: 2;
+  margin-left: -1px;
+}
+
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.nav>li {
+  position: relative;
+  display: block;
+}
+
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs>li {
+  float: left;
+  margin-bottom: -1px;
+}
+
+.nav-tabs>li>a {
+  margin-right: 2px;
+  line-height: 1.42857143;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs>li.active>a {
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+}
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+
+@media (min-width:768px) {
+  .navbar {
+    border-radius: 4px;
+  }
+}
+
+@media (min-width:768px) {
+  .navbar-header {
+    float: left;
+  }
+}
+
+.navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid transparent;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+}
+
+@media (min-width:768px) {
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+  }
+}
+
+.container-fluid>.navbar-header,
+.container-fluid>.navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width:768px) {
+  .container-fluid>.navbar-header,
+  .container-fluid>.navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.navbar-toggle .icon-bar+.icon-bar {
+  margin-top: 4px;
+}
+
+@media (min-width:768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+
+.navbar-nav {
+  margin: 7.5px -15px;
+}
+
+.navbar-nav>li>a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+@media (min-width:768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+
+  .navbar-nav>li {
+    float: left;
+  }
+
+  .navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@media (min-width:768px) {
+  .navbar-right {
+    float: right!important;
+    margin-right: -15px;
+  }
+}
+
+.navbar-default {
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #777;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #ddd;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+
+.navbar-default .navbar-collapse {
+  border-color: #e7e7e7;
+}
+
+.breadcrumb {
+  padding: 8px 15px;
+  margin-bottom: 20px;
+  list-style: none;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.breadcrumb>li {
+  display: inline-block;
+}
+
+.breadcrumb>li+li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";
+}
+
+.breadcrumb>.active {
+  color: #666;
+}
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.pagination>.disabled>span {
+  color: #777;
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e3e3e3;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.well-sm {
+  padding: 9px;
+  border-radius: 3px;
+}
+
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+}
+
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 6px;
+  outline: 0;
+  -webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);
+  box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.modal-header .close {
+  margin-top: -2px;
+}
+
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+.modal-footer .btn+.btn {
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+@media (min-width:768px) {
+  .modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+  }
+
+  .modal-content {
+    -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  }
+}
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 1px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  line-break: auto;
+}
+
+.popover.left {
+  margin-left: -10px;
+}
+
+.popover-content {
+  padding: 9px 14px;
+}
+
+.popover>.arrow,
+.popover>.arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.popover>.arrow {
+  border-width: 11px;
+}
+
+.popover>.arrow:after {
+  content: "";
+  border-width: 10px;
+}
+
+.popover.left>.arrow {
+  top: 50%;
+  right: -11px;
+  margin-top: -11px;
+  border-right-width: 0;
+  border-left-color: #999;
+  border-left-color: rgba(0,0,0,.25);
+}
+
+.popover.left>.arrow:after {
+  right: 1px;
+  bottom: -10px;
+  content: " ";
+  border-right-width: 0;
+  border-left-color: #fff;
+}
+
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.modal-header:before,
+.modal-header:after,
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+.clearfix:after,
+.container:after,
+.container-fluid:after,
+.row:after,
+.nav:after,
+.navbar:after,
+.navbar-header:after,
+.navbar-collapse:after,
+.modal-header:after,
+.modal-footer:after {
+  clear: both;
+}
+
+.pull-right {
+  float: right!important;
+}
+
+.pull-left {
+  float: left!important;
+}
+
+.hide {
+  display: none!important;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+.visible-sm {
+  display: none!important;
+}
+
+.visible-xs-block,
+.visible-xs-inline-block {
+  display: none!important;
+}
+
+@media (max-width:767px) {
+  .visible-xs-block {
+    display: block!important;
+  }
+}
+
+@media (max-width:767px) {
+  .visible-xs-inline-block {
+    display: inline-block!important;
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .visible-sm {
+    display: block!important;
+  }
+}
+
+@media (max-width:767px) {
+  .hidden-xs {
+    display: none!important;
+  }
+}
+
+@media (min-width:768px) and (max-width:991px) {
+  .hidden-sm {
+    display: none!important;
+  }
+}
+
+@media (min-width:1200px) {
+  .hidden-lg {
+    display: none!important;
+  }
+}
+
+.visible-print {
+  display: none!important;
+}
+
+.btn-default {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 1px rgba(0,0,0,.075);
+}
+
+.btn-default {
+  text-shadow: 0 1px 0 #fff;
+  background-image: -webkit-linear-gradient(top,#fff 0,#e0e0e0 100%);
+  background-image: linear-gradient(to bottom,#fff 0,#e0e0e0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe0e0e0',GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-color: #dbdbdb;
+  border-color: #ccc;
+}
+
+.navbar-default {
+  background-image: -webkit-linear-gradient(top,#fff 0,#f8f8f8 100%);
+  background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#fff8f8f8',GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.15),0 1px 5px rgba(0,0,0,.075);
+}
+
+.navbar-nav>li>a {
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}
+
+.well {
+  background-image: -webkit-linear-gradient(top,#e8e8e8 0,#f5f5f5 100%);
+  background-image: linear-gradient(to bottom,#e8e8e8 0,#f5f5f5 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffe8e8e8',endColorstr='#fff5f5f5',GradientType=0);
+  background-repeat: repeat-x;
+  border-color: #dcdcdc;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 1px 0 rgba(255,255,255,.1);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 1px 0 rgba(255,255,255,.1);
+}
+
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,Segoe UI Symbol;
+  overflow-y: scroll;
+  background-color: #113e5b;
+  background: #04325d;
+  background-color: white;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#04325D',endColorstr='#ffffff',GradientType=0);
+  background-image: -ms-linear-gradient(top,#000e1c 0,#245583 50%,white 100%);
+  background-image: -moz-linear-gradient(top,#000e1c 0,#245583 50%,white 100%);
+  background-image: -o-linear-gradient(top,#000e1c 0,#245583 50%,white 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#000e1c),color-stop(0.5,#245583),color-stop(1,white));
+  background-image: -webkit-linear-gradient(top,#000e1c 0,#245583 50%,white 100%);
+  background-image: linear-gradient(to bottom,#000e1c 0,#245583 50%,white 100%);
+  background-repeat: no-repeat;
+  padding-bottom: 175px;
+  position: relative;
+  min-height: 100%;
+}
+
+a {
+  color: #1d61a2;
+}
+
+a.inline-button {
+  border: 1px solid #cdcdcd;
+  background-color: #f2f2f2;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  margin-left: 5px;
+  font-size: .85em;
+  z-index: 2;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: bold;
+}
+
+#skiptocontent a {
+  padding: 6px;
+  padding-right: 12px;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  color: white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  border-bottom-right-radius: 8px;
+  background: transparent;
+  z-index: 100;
+}
+
+/*
+#header-nav a {
+	color:#fff;
+}
+*/
+
+#header-nav,
+.navbar-default {
+  background: #474;
+  background-image: -ms-linear-gradient(top,#106335 0,#0b4424 100%);
+  background-image: -moz-linear-gradient(top,#106335 0,#0b4424 100%);
+  background-image: -o-linear-gradient(top,#106335 0,#0b4424 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#106335),color-stop(100,#0b4424));
+  background-image: -webkit-linear-gradient(top,#106335 0,#0b4424 100%);
+  background-image: linear-gradient(to bottom,#106335 0,#0b4424 100%);
+  border-bottom: 1px solid #474;
+  z-index: 800;
+  line-height: 18px;
+  color: #bbb;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.nav-bar-button {
+  font-size: 13.7px!important;
+  margin-top: 6px;
+  font-weight: normal!important;
+}
+
+.navbar {
+  margin-left: -10px;
+}
+
+#header-nav a.inline-button {
+  border: 0;
+  padding: 2px 8px;
+  background-color: transparent;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 0;
+  padding-bottom: 7px;
+}
+#header-nav a.inline-button span.fixme {
+	color: white;
+}
+
+ul.nav {
+  margin-bottom: 0;
+}
+
+.navbar {
+  position: relative;
+  min-height: 0;
+  margin-bottom: 0;
+  border: 0;
+}
+
+.navbar-toggle {
+  background-color: rgba(200,200,200,0.35);
+}
+
+.navbar-default .navbar-toggle {
+  border: 0;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #999;
+}
+
+.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.push_top {
+  height: 24px;
+}
+
+.nomargin {
+  margin: 0;
+}
+
+#wrap {
+  padding-top: 15px;
+}
+
+#content {
+  position: relative;
+  background-color: white;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid #a2a2a2;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#logo {
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+#logo img {
+  border: 0;
+}
+
+.breadcrumb {
+  -webkit-border-bottom-left-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.breadcrumb .active {
+  color: #666;
+}
+
+.heading {
+  border-bottom: 1px solid #ccc;
+}
+
+.padding {
+  position: relative;
+  padding: 20px;
+}
+
+h3.lead {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.tabbable {
+  *zoom: 1;
+}
+
+.tabbable:before,
+.tabbable:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.tabbable:after {
+  clear: both;
+}
+
+.nav-tabs li.active {
+  font-weight: bold;
+}
+
+.nav-tabs li.active span {
+  font-weight: normal;
+}
+
+.tabs-left>.nav-tabs {
+  border-bottom: 0;
+}
+
+.tabs-left>.nav-tabs>li {
+  float: none;
+}
+
+.tabs-left>.nav-tabs>li>a {
+  min-width: 74px;
+  margin-right: 0;
+  margin-bottom: 3px;
+}
+
+.tabs-left>.nav-tabs {
+  float: left;
+  margin-right: 19px;
+  border-right: 1px solid #ddd;
+}
+
+.tabs-left>.nav-tabs>li>a {
+  margin-right: -1px;
+  -webkit-border-radius: 4px 0 0 4px;
+  -moz-border-radius: 4px 0 0 4px;
+  border-radius: 4px 0 0 4px;
+}
+
+.tabs-left>.nav-tabs .active>a {
+  border-color: #ddd transparent #ddd #ddd;
+  *border-right-color: #fff;
+}
+
+.tabs-left>.nav-tabs a {
+  position: relative;
+  border-color: #ccc #aaa #ccc #ccc;
+}
+
+.tabs-left>.nav-tabs>li>a {
+  background-color: #eee;
+  margin-bottom: 0;
+  background-image: -moz-linear-gradient(top,white,#e6e6e6);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(white),to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top,white,#e6e6e6);
+  background-image: -o-linear-gradient(top,white,#e6e6e6);
+  background-image: linear-gradient(to bottom,white,#e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+}
+
+.tabs-left>.nav-tabs .active>a {
+  background-color: #eee;
+  margin-bottom: 0;
+  background-image: -moz-linear-gradient(top,white,#e6e6e6);
+  background-image: -webkit-gradient(linear,0 0,0 100%,from(white),to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top,white,#e6e6e6);
+  background-image: -o-linear-gradient(top,white,#e6e6e6);
+  background-image: linear-gradient(to bottom,white,#e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff',endColorstr='#ffe6e6e6',GradientType=0);
+}
+
+.tabs-left>.nav-tabs .active>a {
+  background-image: none;
+  background-color: #fff;
+  border-color: #ccc transparent #ccc #ccc;
+  filter: none;
+  outline: 0 none;
+}
+
+.tabs-left>.nav-tabs .inactive>a {
+  color: #999;
+}
+
+.tabs-left>.nav-tabs .active>a {
+  color: #555;
+  font-weight: bold;
+}
+
+.tabs-left>.nav-tabs {
+  border-right: 0;
+}
+
+.item-count {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  color: black;
+  font-size: .9em;
+  padding-top: 1px;
+  font-weight: normal;
+}
+
+ol.item-list li:first-child div.article.item,
+ol.item-list li:first-child div.item-info {
+  border-top: 0 none;
+  padding-top: 0;
+}
+
+.resultlist_container {
+  padding-left: 5px;
+}
+
+.resultlist_container ol.item-list {
+  min-height: 490px;
+  opacity: 1;
+  padding-left: 0;
+}
+
+.resultlist_container ol.item-list.res-mgn-d {
+  margin-left: 25px;
+}
+
+div.article.item {
+  padding-bottom: 12px;
+  padding-top: 12px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #aaa;
+  border-top-color: #ddd;
+  position: relative;
+}
+
+div.article.item .title {
+  max-width: 570px;
+}
+
+div.article.item .metadata {
+  font-size: .85em;
+  margin-top: 3px;
+  color: #216500;
+}
+
+div.article.item .abstract {
+  border-left-width: 3px;
+  border-left-style: solid;
+  border-left-color: #e9e9e9;
+  padding-left: 5px;
+  margin: 7px 40px 3px 4px;
+}
+
+#subnav {
+  padding-bottom: 6px;
+  background-image: url(/pages/img/ui/page_col_shd.png);
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: transparent;
+  background-position: 0 100%;
+  background-repeat: repeat no-repeat;
+}
+
+.restype-links {
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.restype-links h2 {
+  color: #fff;
+  font-size: .85em;
+  font-weight: bold;
+  line-height: 1em;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  margin-right: 4px;
+  text-align: right;
+}
+
+.visible-fp_search {
+  display: none;
+}
+
+.adv_toggle_container {
+  position: absolute;
+  right: 25px;
+  bottom: -18px;
+  width: 100px;
+  background-color: #e0e0e0;
+  font-size: .8em;
+  line-height: 16px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border: 1px solid #005d9b;
+  border: 1px solid #a2a2a2;
+  text-align: center;
+}
+
+#index_search_btn {
+  width: 140px;
+}
+
+#adv_toggle {
+  color: #fff;
+}
+
+#advsearch_btn {
+  width: 165px;
+  background-color: transparent;
+  border: 0;
+  right: 0;
+}
+
+#advsearch_body {
+  padding-bottom: 0;
+}
+
+.adv_search {
+  margin-bottom: 0;
+}
+
+input.adv,
+select.adv {
+  margin-bottom: 0;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+.search-container {
+  position: relative;
+  border: 1px solid #ddd;
+  border: 1px solid #005d9b;
+  border: 1px solid #a2a2a2;
+  background-image: none;
+  background-color: #f5f5f5;
+}
+
+.adv_search .adv::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.adv_search .adv:-moz-placeholder {
+  color: #aaa;
+}
+
+.adv::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.adv:-moz-placeholder {
+  color: #aaa;
+}
+
+.adv-input-150 {
+  width: 150px;
+}
+
+.adv-input-300 {
+  width: 300px;
+}
+
+.adv_search-row {
+  border-bottom: 1px solid #eee;
+  font-size: .9em;
+  background-color: #fff;
+}
+
+.adv_search-row.odd {
+  background-color: #f2f2f2;
+}
+
+.adv_search-label {
+  float: left;
+  width: 140px;
+  padding: 11px 0 0 8px;
+  padding-right: 0;
+  color: #333;
+  text-align: right;
+}
+
+.adv_search-field {
+  padding: 5px 8px;
+  margin-left: 148px;
+  margin-right: 40px;
+  line-height: 5px;
+}
+
+form label {
+  display: inline;
+  font-weight: normal;
+}
+
+.form-control {
+  display: inline-block;
+}
+
+.mobile-search-filters {
+  margin-top: 3px;
+}
+
+#results_container {
+  display: table;
+  width: 100%;
+}
+
+#results_container [class*="col-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+
+input.filter_select {
+  margin-top: 0;
+  position: relative;
+  top: 2px;
+}
+
+.search-save-fmt .search-save-fmt-limit {
+  opacity: 0;
+  margin-left: 10px;
+}
+
+h3#citation-pagetitle {
+  margin-right: 150px;
+  margin-bottom: 0;
+}
+
+.search_results_header h3#citation-pagetitle {
+  margin-right: 0;
+}
+
+#citation-details {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer .footer-tray ul {
+  padding-left: 0;
+  display: inline-block;
+  text-align: left;
+}
+
+footer .footer-tray ul li {
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+footer .footer-tray ul li.nav-header {
+  padding-left: 0;
+  text-shadow: none;
+  font-weight: normal;
+  color: #aaa;
+}
+
+footer .footer-tray {
+  background-color: #335f7d;
+  box-shadow: inset 0 7px 19px -7px rgba(0,0,0,0.3);
+  border-top: 2px solid #474;
+}
+
+.breadcrumb>li#schtype_msg:before {
+  padding: 0;
+  content: "";
+}
+
+.modal-header h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.modal-footer {
+  padding: 8px;
+}
+
+.icon-filter {
+	opacity:0.25;
+	filter: alpha(opacity=25);
+}
+li.active .icon-filter {
+	opacity:1;
+	filter: none;
+}
+
+.facet-group {
+    list-style-type:none;
+    padding-left:0px;
+}
+.facet-group.active {
+    margin-bottom: 15px;
+}
+.facet-item {
+    margin-top:3px;
+    display:none;
+}
+.facet-item-count {
+    padding-left:5px;
+}
+.facet-item-more {
+    margin-top:3px;
+ }
+.facet-item:nth-child(-n+5){
+    display:block;
+}
+ul.facet-group.active .facet-item {
+    display:block;
+}
+ul.facet-group.active .facet-item-more {
+    display:none;
+}
+
+.nav {
+  margin-bottom: 20px;
+  margin-left: 0;
+  list-style: none;
+}
+
+.nav>li>a {
+  display: block;
+}
+
+.nav-header {
+  display: block;
+  padding: 3px 15px;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 20px;
+  /* color: #999; */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+  text-transform: uppercase;
+}
+
+.nav-list {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+.nav-list .nav-header {
+  margin-right: -15px;
+  margin-left: -15px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.nav-list [class*=" icon-"] {
+  margin-right: 2px;
+}
+
+.nav-list .divider {
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  height: 1px;
+  margin: 9px 1px;
+  overflow: hidden;
+}
+
+.two_col_container {
+  background-color: #fff;
+}
+
+.subnav_container {
+  height: 100%;
+  min-height: 100%;
+  background-color: #e7e7e7;
+  border-right: 1px solid #a4a4a4;
+  margin-bottom: -99900px;
+  padding-bottom: 99999px;
+}
+
+.popover {
+  min-width: 230px;
+}
+
+a.btn.paging-dropdown {
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-right: 0;
+}
+
+button.pagination-go-slider {
+  line-height: 14px;
+}
+
+@media all and (max-width:480px) {
+  #results_container {
+    width: auto;
+  }
+}
+
+@media (max-width:767px) {
+  h1#logo {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  #index_search_btn {
+    width: 40px;
+  }
+
+  .heading .pagination,
+  .heading .sorting {
+    display: none;
+  }
+
+  h3#citation-pagetitle {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  div.adv_search-label {
+    width: 100%;
+    text-align: left;
+  }
+
+  div.adv_search-field {
+    margin-left: 0;
+  }
+
+  .adv-input-300 {
+    width: 100%;
+  }
+
+  .adv_search-field {
+    margin-right: 0;
+  }
+
+  #header-nav,
+  .navbar-default {
+    background-image: none;
+    background-color: #113e5b;
+  }
+
+  #header-nav a.inline-button,
+  #header-nav a.nav-bar-button {
+    margin-left: 0;
+    margin-top: 0;
+    line-height: 24px;
+    font-size: 13px;
+    font-weight: normal;
+    padding-bottom: 2px;
+  }
+
+  .navbar {
+    margin-left: 0;
+  }
+
+  .navbar-nav {
+    margin: 0;
+  }
+
+  .navbar-collapse {
+    margin-bottom: 15px;
+    background-color: rgba(255,255,255,0.2);
+  }
+
+  .nav>li {
+    border-bottom: 1px solid #113e5b;
+  }
+
+  .resultlist_container {
+    padding-left: 20px;
+  }
+
+  .resultlist_container ol.item-list {
+    list-style-type: none;
+  }
+
+  .resultlist_container ol.item-list.res-mgn-d {
+    margin-left: 0;
+  }
+
+  #pagination-lower .pagination .btn {
+    display: table-cell;
+    float: none;
+    width: 1%;
+  }
+
+  div.metadata span.authors span:nth-child(n+5) {
+    display: none;
+  }
+
+  div.metadata span.authors span:nth-child(n+4):after {
+    content: "et al";
+  }
+
+  div.article.item .abstract {
+    font-size: .85em;
+    line-height: 1.7em;
+    color: #777;
+    margin: 7px 15px 3px 4px;
+  }
+
+  div.footer-links-c,
+  div.footer-links-r {
+    text-align: left;
+  }
+}
+
+@media (min-width:992px) {
+  #advsearch_btn {
+    width: 200px;
+    right: 25px;
+  }
+}</style>
+		<script type="text/javascript">
+            var _gaq = _gaq || []; </script>
+		<!-- google meta tags -->
+                <meta name="citation_title" content="Occupancy schedules learning process through a data mining framework" /><meta name="citation_authors" content="D'Oca, Simona ; Hong, Tianzhen " /><meta name="citation_date" content="2014/12" /><meta name="citation_language" content="English" /><meta name="citation_technical_report_number" content="LBNL-180204" /><meta name="citation_technical_report_institution" content="Lawrence Berkeley National Lab. (LBNL), Berkeley, CA (United States)" /><meta name="citation_pdf_url" content="https://www.osti.gov/pages/servlets/purl/1253720" /><meta name="citation_doi" content="10.1016/j.enbuild.2014.11.065" /><meta name="dc.identifier" content="10.1016/j.enbuild.2014.11.065" /><meta name="citation_keywords" content=" energy conservation, consumption, and utilization; occupant behavior; data mining; occupancy schedule; behavioral pattern; office building; building simulation" /><meta name="citation_publisher" content="Elsevier" /><meta name="citation_journal_title" content="Energy and Buildings" /><meta name="citation_issn" content="0378-7788" /><meta name="citation_volume" content="88" /><meta name="citation_issue" content="C" /><script type="text/javascript">
+                    
+                        _gaq.push(['_setCustomVar', 1, 'Product Type', 'Journal Article', 3]);
+                    
+                        _gaq.push(['_setCustomVar', 2, 'Product Subtype', 'AM', 3]);                        
+                    </script><script type="text/javascript">
+				_gaq.push(['_setAccount', 'UA-18099922-2']);
+				_gaq.push(['_setDomainName', 'www.osti.gov']);
+				_gaq.push(['_trackPageview']);
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>
+		</head>
+	<body data-baseurl="https://www.osti.gov" data-context="/pages">
+	<div id="skiptocontent"><a href="#wrap">skip to main content</a></div>
+	<div id="header-nav" class="hidden-print">
+		<div class="container">
+			
+      <nav id="sub-header-nav" class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+			<a href="/pages/" class="visible-xs-inline-block"><img src="/pages/img/ui/Pages_white_crop.png" height="60" alt="DOE PAGES" style="margin-top:11px;margin-bottom:9px;margin-left:15px;" /></a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" style="margin-top:25px;">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="/pages/" style="margin-left:0px;" title="PAGES Home" id="nav-home" class="nav-button inline-button nav-bar-button">Home</a></li>
+				<li><a href="/pages/about" title="About DOE PAGES" id="nav-about" class="nav-button inline-button nav-bar-button">About<span class="hidden-sm fixme" style="color:white;"> PAGES</span></a></li>
+				<li><a href="/pages/faq" title="Frequently Asked Questions" id="nav-faq" class="nav-button inline-button nav-bar-button">FAQs</a></li>
+				<li><a href="/pages/policy_communications" title="Public Access Policy and Communications" id="nav-comm" class="nav-button inline-button nav-bar-button">Policy / Communications</a></li>
+				<li><a href="/pages/contact" title="Contact Us" id="nav-fbck" class="nav-button inline-button nav-bar-button">Contact Us</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="hidden-xs"><span class="hidden-sm" style="display: inline-block; margin-top: 9px; font-size: 13.7px; font-weight: normal;">Save searches, create alerts, and export data:&nbsp;</span></li>
+						<li><a href="/pages/login" title="" id="nav-sign" class="nav-button inline-button nav-bar-button">Sign In</a></li>
+						<li class="hidden-xs"><span style="display: inline-block; margin-top: 9px; margin-left:0px; font-size: 13.7px; font-weight: normal;">or</span></li>
+						<li><a href="/pages/createaccount" title="" id="nav-cre8" class="nav-button inline-button nav-bar-button" style="margin-left:0px;">Create Account</a></li>
+					</ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>			
+			</div>
+	</div>
+	<!-- content -->
+	<div id="wrap">
+		<div class="container">
+	
+		<div class="row">
+				<div class="col-sm-4">
+					<h1 id="logo" class="hidden-xs"><a href="/pages/" style="color:#fff;"><img src="/pages/img/ui/Pages_white_crop.png" class="hidden-print" width="193" height="75" alt="DOE PAGES" /><img src="/pages/img/ui/Pages_color_crop.png" class="visible-print" width="191" height="75" alt="DOE PAGES" /></a></h1>
+				</div>
+				<div class="col-sm-8 hidden-print">
+					<!-- search box -->
+					<div class="restype-links hidden-xs">
+	<h2>Access journal articles and accepted manuscripts<span class="hidden-sm hidden-xs"><span class="visible-fp_search hidden-lg"><br/></span> resulting</span> from DOE research funding</h2>
+</div>
+<div class="well well-sm search-container">
+	<form action="/pages/search" id="index_search" class="adv_search" method="POST" autocomplete="off">
+		<input type="hidden" id="index_search_search" name="search" value="act"/>
+		<input type="hidden" id="index_search_schtype" name="schtype" value="adv"/>
+        <input type="hidden" id="index_search_restype" name="restype" value="F"/>
+		<input type="hidden" id="index_search_semtype" name="semtype" value="term"/>
+		<input type="hidden" id="index_search_distype" name="distype" value="" data-orig=""/>
+		<input type="hidden" id="index_search_rows" name="rows" value="10"/>
+		<input type="hidden" id="index_search_page" name="page" value=""/>
+		<input type="hidden" id="index_search_facet" name="facet" value=""/>
+		<input type="hidden" id="index_search_authorfacet" name="authorfacet" value=""/>
+		<input type="hidden" id="index_search_journalfacet" name="journalfacet" value=""/>
+		<input type="hidden" id="index_search_yearfacet" name="yearfacet" value=""/>
+        <input type="hidden" id="index_search_clearprefs" name="clearprefs" value=""/>
+		<div class="input-group" style="margin-bottom:0px;">
+			<label class="sr-only" for="searchQuery">Search terms:</label>
+			<input class="form-control formfield-clear copyterms" id="searchQuery" type="text" name="searchTerm" value="" placeholder="Search" />
+			<span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+			</span>
+		</div>
+		<div class="adv_toggle_container" id="advsearch_btn">
+			<a href="#advfilters" class="ga-click-event" data-category="Search Form" data-action="Advanced search: open" data-label="open" data-target="#advfilters" data-toggle="modal" id="adv_toggle">&#43; Advanced Search</a>
+		</div>
+		<div id="advfilters" class="modal " tabindex="-1" role="dialog" aria-labelledby="advfilters_label" aria-hidden="true" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 id="advfilters_label">Advanced Search</h2>
+			</div>
+		  <div class="modal-body" id="advsearch_body">
+									<div style="">
+
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-allfields">All Fields:</label></div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear copyterms" type="text" name="allfields" id="adv-allfields" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-doctitle">Title:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="title" id="adv-doctitle" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-fulltext">Full Text:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="fulltext" id="adv-fulltext" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-biblio">Bibliographic Data:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="biblio" id="adv-biblio" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-creators">Creator / Author:</label> </div>
+											<div class="adv_search-field">
+												<div class="input-group" style="display:inline-block; width:300px;">
+													<input type="hidden" name="creators_type" id="adv-creators_type" value="" />
+													<input class="input-sm form-control formfield-clear adv" type="text" name="creators" id="adv-creators" value="" />
+													<div class="input-group-btn">
+														<div class="btn-group">
+															<button class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" style="width:75px;"><span id="adv-creators_type-label">Name</span> <span class="caret"></span></button>
+															<ul class="dropdown-menu">
+																<li><a href="#" onclick="$('#adv-creators_type-label').text('Name');$('#adv-creators_type').val('');return false;">Name</a></li>
+																<li><a href="#" onclick="$('#adv-creators_type-label').text('ORCID');$('#adv-creators_type').val('orcid');return false;">ORCID</a></li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-journaltype">Article Type:</label> </div>
+											<div class="adv_search-field">
+												<select class="input-sm form-control adv adv-input-300" id="adv-journaltype" name="journal_type">
+													<option value="">All</option>
+													<option value="AM" >Accepted Manuscript</option>
+													<option value="PA" >Published Article</option>
+													<option value="PM" >Publisher's Accepted Manuscript</option>
+												</select>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-journalname">Journal Name:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="journal_name" id="adv-journalname" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-subject">Subject:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="subject" id="adv-subject" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-idnos">Identifier Numbers:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="idnos" id="adv-idnos" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-research_org">Research Org:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="research_org" id="adv-research_org" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-sponsor_org">Sponsoring Org:</label> </div>
+											<div class="adv_search-field">
+												<input class="input-sm form-control adv adv-input-300 formfield-clear" type="text" name="sponsor_org" id="adv-sponsor_org" value=""/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row">
+											<div class="adv_search-label"><label for="adv-pubd_from">Publication Date:</label> </div>
+											<div class="adv_search-field formfield-clear-inline">
+												<input type="text" id="adv-pubd_from" name="pubd_from" data-toggle="tooltip" data-placement="bottom" title="Enter date in MM/DD/YYYY format" class="input-sm form-control adv adv-input-150 dateinput formfield-clear" value="" placeholder="MM/DD/YYYY"/>
+												&nbsp;&nbsp;&nbsp; <label for="adv-pubd_until">to</label> &nbsp;&nbsp;&nbsp;
+												<input type="text" id="adv-pubd_until" name="pubd_until" data-toggle="tooltip" data-placement="bottom" title="Enter date in MM/DD/YYYY format" class="input-sm form-control adv adv-input-150 dateinput formfield-clear" value="" placeholder="MM/DD/YYYY"/>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+										<div class="adv_search-row odd">
+											<div class="adv_search-label"><label for="adv-sort">Sort:</label> </div>
+											<div class="adv_search-field">
+												<select class="input-sm form-control adv adv-input-300" id="adv-sort" name="sort">
+													<option value="score desc" >Relevance (highest to lowest)</option>
+															<option value="publication_date desc" >Publication Date (newest first)</option>
+															<option value="publication_date asc" >Publication Date (oldest first)</option>
+															<option value="metrics_total_citations desc" >Most Cited</option>
+														</select>
+												<div style="clear:both;"></div>
+											</div>
+										</div>
+									</div>
+		  </div>
+		  <div class="modal-footer">
+				<input type="hidden" id="adv-is_clear" name="is_clear" value="" data-orig="" />
+				<button class="btn btn-sm btn-default pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
+				<button class="btn btn-sm btn-default" onclick="clearAdv();return false;">Clear All</button>
+				<button class="btn btn-sm btn-default col-md-2 pull-right" aria-hidden="true" type="submit" id="advfilters_submit"><span class="glyphicon glyphicon-search"></span> Find</button>
+		  </div>
+		</div>
+	</div>
+</div>
+
+
+</form>
+</div>
+<!-- /search box -->
+				</div>
+			</div>
+		<div id="content">
+
+			<ul class="breadcrumb biblio-page hidden-print">
+                <li><small><a class="left" href="/pages/">DOE PAGES</a></small></li>
+                <li class="active"><small>Accepted Manuscript: <em>Occupancy schedules learning process through a data mining framework</em></small></li>
+                </ul><div itemscope itemtype="http://schema.org/ScholarlyArticle" class="biblio-page" data-ostiid="1253720" data-doi="10.1016/j.enbuild.2014.11.065" data-type="AM">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <div class="padding">
+                            <h3 class="lead" id="citation-pagetitle">
+                                <span style="font-weight:normal;display:none;">Title: </span><span itemprop="name">Occupancy schedules learning process through a data mining framework</span></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                            
+            <div class="row" style="padding-left:30px; padding-right:30px;">
+                <div class="col-12 padding">
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs small clearfix">
+                                <li class="active"><a href="#biblio-full" class="tab-nav biblio-detail-tab" id="biblio-fullrecord-tab" data-tab="biblio" data-ostiid="1253720" data-type="tab-details">Article Details</a></li>
+                                <li class=""><a href="#biblio-related" class="tab-nav biblio-detail-tab" data-tab="biblio" data-ostiid="1253720" data-type="tab-related">Other Related Research</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <section id="biblio-full" class="tab-content active" data-tab="biblio">
+                                <div class="row">
+                                    <div class="col-12 biblio-full-primary">
+                                        
+                                        <div class="alert alert-success" style="margin: 20px; margin-bottom:0px;">
+                                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                                <p style="margin-bottom:0px;">
+                                                    You are accessing a document from the Department of Energy's (DOE) <a href="//www.osti.gov/pages">Public Access Gateway for Energy &amp; Science (PAGES)</a>.  
+                                                    This site is a product of DOE's <a href="//www.osti.gov" target="_blank" rel="noopener">Office of Scientific and Technical Information</a> (OSTI) and is provided as a public service. 
+                                                    Visit <a href="//www.osti.gov" target="_blank" rel="noopener">OSTI</a> to utilize additional information resources in energy science and technology.
+                                                </p>
+                                            </div>			
+                                        <div class="row">
+                                            <div class="col-lg-9">
+                                                <div id="citation-details">
+                                                    <div class="biblio-detail">
+	<span class="description" itemprop="description">
+			Building occupancy is a paramount factor in building energy simulations. Specifically, lighting, plug loads, HVAC equipment utilization, fresh air requirements and internal heat gain or loss greatly depends on the level of occupancy within a building. Developing the appropriate methodologies to describe and reproduce the intricate network responsible for human-building interactions are needed. Extrapolation of patterns from big data streams is a powerful analysis technique which will allow for a better understanding of energy usage in buildings. A three-step data mining framework is applied to discover occupancy patterns in office spaces. First, a data set of 16 offices with 10 minute interval occupancy data, over a two year period is mined through a decision tree model which predicts the occupancy presence. Then a rule induction algorithm is used to learn a pruned set of rules on the results from the decision tree model. Finally, a cluster analysis is employed in order to obtain consistent patterns of occupancy schedules. Furthermore, the identified occupancy rules and schedules are representative as four archetypal working profiles that can be used as input to current building energy modeling programs, such as EnergyPlus or IDA-ICE, to investigate impact of occupant presence on design, operation and energy<a href='#' onclick='$(this).hide().next().show().next().show();return false;' style='margin-left:10px;'>more&nbsp;&raquo;</a><span style='display:none;'> use in office buildings.</span><a href='#' onclick='$(this).hide().prev().hide().prev().show();return false;' style='margin-left:10px;display:none;'>&laquo;&nbsp;less</a></span>
+		<div style="clear:both;margin-bottom:20px;"></div>
+	<dl class="dl-horizontal small">
+		<dt>Authors:</dt><dd>
+			<a href="/pages/search/author:&quot;D'Oca, Simona&quot;"><span class="author" itemprop="author">D'Oca, Simona</span>&nbsp;<sup class="text-muted">[1]</sup></a>
+	<span class="sep">; </span><a href="/pages/search/author:&quot;Hong, Tianzhen&quot;"><span class="author" itemprop="author">Hong, Tianzhen</span>&nbsp;<sup class="text-muted">[2]</sup></a>
+	<hr style="margin-top:8px;margin-bottom:8px;"/>
+	<div class="affiliation_toggle hidden-print"><a href="#" onclick="$('.affiliation_list').removeClass('visible-print');$('.affiliation_toggle').addClass('hide');return false;">&#43; Show Author Affiliations</a></div>
+	<ol class="affiliation_list visible-print" style="padding-left:15px;">
+		<li>Lawrence Berkeley National Lab. (LBNL), Berkeley, CA (United States); Polytechnic of Turin, Torino (Italy)</li>
+		<li>Lawrence Berkeley National Lab. (LBNL), Berkeley, CA (United States)</li>
+		</ol>
+</dd>
+		</dl>
+	<dl class="dl-horizontal small"><dt>Publication Date:</dt><dd><time itemprop="datePublished" datetime="2014-12-17">2014-12-17</time></dd></dl>
+	<dl class="dl-horizontal small"><dt>Report Number(s):</dt><dd>LBNL-180204<br/>Journal ID: ISSN 0378-7788;  ir:180204</dd></dl>
+	<dl class="dl-horizontal small"><dt>Grant/Contract Number:</dt><dd>AC02-05CH11231</dd></dl>
+	<dl class="dl-horizontal small"><dt>Type:</dt><dd>Accepted Manuscript</dd></dl>
+			<dl class="dl-horizontal small"><dt>Journal Name:</dt><dd>Energy and Buildings</dd></dl>
+			<dl class="dl-horizontal small"><dt>Additional Journal Information:</dt><dd>Journal Volume: 88; Journal Issue: C; Journal ID: ISSN 0378-7788</dd></dl>
+			<dl class="dl-horizontal small"><dt>Publisher:</dt><dd itemprop="publisher">Elsevier</dd></dl>
+	<dl class="dl-horizontal small"><dt>Research Org:</dt><dd itemprop="sourceOrganization">Lawrence Berkeley National Lab. (LBNL), Berkeley, CA (United States)</dd></dl>
+	<dl class="dl-horizontal small"><dt>Sponsoring Org:</dt><dd itemprop="sourceOrganization">USDOE</dd></dl>
+	<dl class="dl-horizontal small"><dt>Country of Publication:</dt><dd>United States</dd></dl>
+	<dl class="dl-horizontal small"><dt>Language:</dt><dd itemprop="inLanguage">English</dd></dl>
+	<dl class="dl-horizontal small"><dt>Subject:</dt><dd>
+			<span class="subject" itemprop="about">32 ENERGY CONSERVATION, CONSUMPTION, AND UTILIZATION</span><span class="sep">; </span><span class="subject" itemprop="about">occupant behavior</span><span class="sep">; </span><span class="subject" itemprop="about">data mining</span><span class="sep">; </span><span class="subject" itemprop="about">occupancy schedule</span><span class="sep">; </span><span class="subject" itemprop="about">behavioral pattern</span><span class="sep">; </span><span class="subject" itemprop="about">office building</span><span class="sep">; </span><span class="subject" itemprop="about">building simulation</span></dd></dl>
+	<dl class="dl-horizontal small"><dt>OSTI Identifier:</dt><dd>1253720</dd></dl>
+	<dl class="dl-horizontal small"><dt>Alternate Identifier(s):</dt><dd>OSTI ID: 1360831</dd></dl>
+	<div class="clearfix"></div>
+</div>
+</div>
+                                                <div class="d-none d-md-block mb-2" style="margin-left:30px;">
+                                                   <hr/>
+                                                   <div class="biblio-cite">
+    
+    <header class="title-citeformat nav-header">Citation Formats</header>
+    
+    <div class="mb-2"><div class="col-12">
+        <ul class="nav nav-tabs small clearfix">
+          <li class="active"><a href="#biblio-cite-mla" class="tab-nav" data-tab="cite">MLA</a></li>
+          <li><a href="#biblio-cite-apa" class="tab-nav" data-tab="cite">APA</a></li>
+          <li><a href="#biblio-cite-chi" class="tab-nav" data-tab="cite">Chicago</a></li>
+          <li><a href="#biblio-cite-bib" class="tab-nav" data-tab="cite">Bibtex</a></li>
+        </ul>
+    </div></div>
+    <div class=""><div class="col-12">
+            
+        <section id="biblio-cite-mla" class="tab-content active" data-tab="cite">
+            <div class="small">
+                <code id="biblio-cite-mla-code">
+                    D'Oca, Simona, and Hong, Tianzhen. <em>Occupancy schedules learning process through a data mining framework</em>.  United States: N. p.,  
+        Web.  doi:10.1016/j.enbuild.2014.11.065. </code>
+            </div>
+            <div class="text-right small" style="margin-top:1em;"><a href="#" class="clip-cite-bib" data-clipboard-target="biblio-cite-mla-code"><span class="fa fa-files-o"></span> Copy to clipboard</a></div>
+        </section>
+            
+        <section id="biblio-cite-apa" class="tab-content" data-tab="cite">
+            <div class="small">
+                <code id="biblio-cite-apa-code">
+                    D'Oca, Simona, &amp; Hong, Tianzhen. <em>Occupancy schedules learning process through a data mining framework</em>.  United States.  doi:10.1016/j.enbuild.2014.11.065. </code>
+            </div>
+            <div class="text-right small" style="margin-top:1em;"><a href="#" class="clip-cite-bib" data-clipboard-target="biblio-cite-apa-code"><span class="fa fa-files-o"></span> Copy to clipboard</a></div>
+        </section>
+                
+        <section id="biblio-cite-chi" class="tab-content" data-tab="cite">
+            <div class="small">
+                <code id="biblio-cite-chi-code">
+                    D'Oca, Simona, and Hong, Tianzhen. 2014.  
+        "Occupancy schedules learning process through a data mining framework".  United States.  
+        doi:10.1016/j.enbuild.2014.11.065.  https://www.osti.gov/servlets/purl/1253720. </code>
+            </div>
+            <div class="text-right small" style="margin-top:1em;"><a href="#" class="clip-cite-bib" data-clipboard-target="biblio-cite-chi-code"><span class="fa fa-files-o"></span> Copy to clipboard</a></div>
+        </section>
+
+        <section id="biblio-cite-bib" class="tab-content" data-tab="cite">
+            <div class="small">
+                <code id="biblio-cite-bib-code">
+                    
+@article{osti_1253720,<br/>
+  title        = {Occupancy schedules learning process through a data mining framework},<br/>
+  author       = {D'Oca, Simona and Hong, Tianzhen},<br/>
+  abstractNote = {Building occupancy is a paramount factor in building energy simulations. Specifically, lighting, plug loads, HVAC equipment utilization, fresh air requirements and internal heat gain or loss greatly depends on the level of occupancy within a building. Developing the appropriate methodologies to describe and reproduce the intricate network responsible for human-building interactions are needed. Extrapolation of patterns from big data streams is a powerful analysis technique which will allow for a better understanding of energy usage in buildings. A three-step data mining framework is applied to discover occupancy patterns in office spaces. First, a data set of 16 offices with 10 minute interval occupancy data, over a two year period is mined through a decision tree model which predicts the occupancy presence. Then a rule induction algorithm is used to learn a pruned set of rules on the results from the decision tree model. Finally, a cluster analysis is employed in order to obtain consistent patterns of occupancy schedules. Furthermore, the identified occupancy rules and schedules are representative as four archetypal working profiles that can be used as input to current building energy modeling programs, such as EnergyPlus or IDA-ICE, to investigate impact of occupant presence on design, operation and energy use in office buildings.},<br/>
+  doi          = {10.1016/j.enbuild.2014.11.065},<br/>
+  journal      = {Energy and Buildings},<br/>
+  number       = C,<br/>
+  volume       = 88,<br/>
+  place        = {United States},<br/>
+  year         = {2014},<br/>
+  month        = {12}<br/>
+}
+    </code>
+            </div>
+            <div class="text-right small" style="margin-top:1em;"><a href="#" class="clip-cite-bib" data-clipboard-target="biblio-cite-bib-code"><span class="fa fa-files-o"></span> Copy to clipboard</a></div>
+        </section>
+            
+    </div></div>
+
+    
+    
+</div>
+</div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div id="citation-sidebar">
+                                                    <ul class="nav nav-list" id="citation-fulltext-sidebar">
+	
+<li style="font-weight: bold; margin-bottom: 5px; font-size:13px;">Free Publicly Accessible Full Text</li>
+<li class="small">
+						<a href="https://doi.org/10.1016/j.enbuild.2014.11.065" target="_blank" rel="noopener" title="Document DOI URL" class="doi-link" data-ostiid="1253720" data-product-type="Journal Article" data-product-subtype="AM" style="word-wrap: break-word;">Accepted Manuscript (Publisher)</a>
+					</li>
+				<li>
+					<span class="text-muted pull-right small" style="line-height:20px;margin-right:-10px;"><small id="citation-fulltext-sidebar-sizetext"></small></span>
+					<small><a class="misc fulltext-link" data-ostiid="1253720" data-product-type="Journal Article" data-product-subtype="AM" href="/pages/servlets/purl/1253720" target="_blank" rel="noopener">Accepted Manuscript (DOE)<img src="/pages/img/ui/page_white_acrobat.png" alt="Accepted Manuscript (DOE)" id="citation-fulltext-sidebar-size" class="ft_icon"/></a></small>
+					</li>
+			<li class="divider"></li>
+		<li style="font-weight: bold; margin-bottom: 5px; font-size:13px;">Publisher's Version of Record</li>
+		<li style="word-wrap: break-word;" class="small hidden-print">
+					<a href="https://doi.org/10.1016/j.enbuild.2014.11.065" target="_blank" rel="noopener" title="Document DOI URL" class="doi-link" data-ostiid="1253720" data-product-type="Journal Article" data-product-subtype="AM" style="word-wrap: break-word;">10.1016/j.enbuild.2014.11.065</a></li>
+				<li class="small visible-print">
+					https://doi.org/10.1016/j.enbuild.2014.11.065</li>
+			</ul><ul class="nav nav-list">
+                                                        <li class="divider"></li>
+                                                        <li style="margin-bottom:2px;" class="small"><small><a href="/pages/disclaimer#copyright">Copyright Statement</a></small></li>
+                                                    </ul>
+                                                    <div class="hidden-print">
+                                                        <ul class="nav nav-list" style="margin-top:20px;">
+                                                                    <li class="divider"></li>
+                                                                    <li class="nav-header" style="margin-top:15px;">Citation Metrics</li>
+                                                                    <li class="small">
+                                                                        <span class="fa fa-book text-muted" aria-hidden="true"></span> Cited by: 56works</li>
+                                                                    <li class="small text-muted" style="padding-left:5px; margin-top:15px; margin-bottom:15px;">
+                                                                        <em>Citation information provided by<br/> Web of Science</em>
+                                                                    </li>
+                                                                </ul>								
+                                                                <ul class="nav nav-list">
+                                                                <li class="divider"></li>
+                                                                <li class="nav-header">Save / Share this Record</li>
+                                                                <li class="dropdown" style="margin-bottom:2px;">
+                                                                    <small>
+                                                                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Export Metadata <span class="glyphicon glyphicon-menu-down" style="color:#ccc;" aria-hidden="true"></span></a>
+                                                                    <ul class="dropdown-menu" style="min-width:200px;">
+                                                                        <li class="small"><a href="#" class="export-link" data-export="biblio" data-ostiid="1253720" data-format="enw" rel="nofollow">Endnote</a></li>
+                                                                        <li class="small"><a href="#" class="export-link" data-export="biblio" data-ostiid="1253720" data-format="ris" rel="nofollow">RIS</a></li>
+                                                                        <li class="small"><a href="#" class="export-link" data-export="biblio" data-ostiid="1253720" data-format="xls" rel="nofollow">Excel</a></li>
+                                                                        <li class="small"><a href="#" class="export-link" data-export="biblio" data-ostiid="1253720" data-format="csv" rel="nofollow">CSV</a></li>
+                                                                        <li class="small"><a href="#" class="export-link" data-export="biblio" data-ostiid="1253720" data-format="xml" rel="nofollow">XML</a></li>
+                                                                    </ul>
+                                                                    </small>
+                                                                </li>
+                                                                <li style="margin-bottom:2px;"><small><a href="#" id="savedoc-btn-disabled" class="" data-toggle="popover" data-placement="left" data-content='You must <a class="" href="/pages/login">Sign In</a> or <a href="/pages/createaccount">Create an Account</a> in order to save documents to your library.' title="Save this document">Save to My Library</a></small></li>
+                                                                    <li style="margin-bottom:2px;"><small><a href="#shareemail" data-toggle="modal">Send to Email</a>
+                                                                    <div id="shareemail" class="modal" tabindex="-1" role="dialog" aria-labelledby="shareemail_label" aria-hidden="true">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                                    <h4 id="shareemail_label">Send to Email</h4>
+                                                                                </div>
+                                                                                <form id="sendtoemail-form" style="margin-bottom:0px;">
+                                                                                <div class="modal-body" id="shareemail_body">
+                                                                                    <div class="modal-body-default">
+                                                                                        <label for="sendtoemail-email">Email address:</label><br/>
+                                                                                        <input type="text" name="email" value="" class="col-md-5 input-sm form-control" id="sendtoemail-email"/>
+                                                                                        <input type="hidden" name="osti_id" id="sendtoemail-osti_id" value="1253720" />
+                                                                                        <input type="hidden" name="subject" id="sendtoemail-subject" />
+                                                                                        <div class="clearfix"></div>
+                                                                                        <div class="hide"><label for="sendtoemail-body">Content:</label></div>
+                                                                                        <textarea name="body" id="sendtoemail-body" style="display:none;"></textarea>
+                                                                                    </div>
+                                                                                    <div class="modal-body-submitted hide">
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button class="btn btn-sm btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+                                                                                    <button class="btn btn-sm btn-default" aria-hidden="true" type="submit" id="shareemail_submit"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+                                                                                </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>							
+                                                                    </small></li>
+                                                            </ul>
+                                                        </div>
+                                                    <div class="push_top"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                            </section>
+                                                    
+                            <section id="biblio-related" class="tab-content tab-content-sec" data-tab="biblio">
+                <div class="row">
+                    <div class="col-sm-3 order-sm-3">
+                        <ul class="nav nav-stacked" style="margin-top:20px;">
+                            <li class="active disabled"><a class="tab-nav" data-tab="related" style="color: #636c72 !important; opacity: 1;"><span class="fa fa-angle-right"></span> Similar Records</a></li>
+                                </ul>
+                    </div>
+                    <div class="col-sm-9 order-sm-9">
+
+                        <section id="biblio-similar" class="tab-content tab-content-sec active" data-tab="related">
+                            <div class="padding">
+                                <p class="lead text-muted" style="font-size: 18px; margin-top:0px;">Similar records in DOE PAGES and OSTI.GOV collections:</p>
+                                <aside>
+                                <ul class="item-list" itemscope itemtype="http://schema.org/ItemList" style="padding-left:0; list-style-type: none;">
+                                    <li>
+            <div class="article item document" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="position" content="0" /><div class="item-info">
+                    <div class="title">
+                        <a href="/pages/biblio/1360831-occupancy-schedules-learning-process-through-data-mining-framework" itemprop="url" ><span itemprop="name">Occupancy schedules learning process through a data mining framework</span></a>
+                    </div>
+                    <div class="metadata">
+                        <small><small class="text-muted" style="text-transform:uppercase;display:block;line-height:2.5em;">Journal Article</small></small><span class="authors">
+                            <span class="author" itemprop="author">D’Oca, Simona</span>
+                            ; <span class="author" itemprop="author">Hong, Tianzhen</span>
+                            <span class="text-muted" style="margin-left: 15px;"><time itemprop="datePublished" datetime="2015-02-01">February&nbsp;2015</time> - Energy and Buildings</span>
+                            </span>
+                    </div>
+                    <div class="small clearfix" style="/* border-top:1px solid #eee; background-color:#f7f7f7; padding:8px; */ margin-top:15px;">
+                        <span class="fa fa-book text-muted" aria-hidden="true"></span> Cited by 56<a class="misc doi-link pull-right" href="https://doi.org/10.1016/j.enbuild.2014.11.065" target="_blank" rel="noopener" title="Link to document DOI" data-ostiid="1360831" data-product-type="Journal Article" data-product-subtype="PM">Full Text Available</a>
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>		
+    <li>
+            <div class="article item document" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="position" content="1" /><div class="item-info">
+                    <div class="title">
+                        <a href="/pages/biblio/1237140-bayesian-machine-learning-model-estimating-building-occupancy-from-open-source-data" itemprop="url" ><span itemprop="name">A Bayesian Machine Learning Model for Estimating Building Occupancy from Open Source Data</span></a>
+                    </div>
+                    <div class="metadata">
+                        <small><small class="text-muted" style="text-transform:uppercase;display:block;line-height:2.5em;">Journal Article</small></small><span class="authors">
+                            <span class="author" itemprop="author">Stewart, Robert N.</span>
+                            ; <span class="author" itemprop="author">Urban, Marie L.</span>
+                            ; <span class="author" itemprop="author">Duchscherer, Samantha E.</span>
+                            ; <span class="author">...</span> <span class="text-muted" style="margin-left: 15px;"><time itemprop="datePublished" datetime="2016-01-01">January&nbsp;2016</time> - Natural Hazards</span>
+                            </span>
+                    </div>
+                    <div class="abstract" itemprop="description">Understanding building occupancy is critical to a wide array of applications including natural hazards loss analysis, green building technologies, and population distribution modeling. Due to the expense of directly monitoring buildings, scientists rely in addition on a wide and disparate array of ancillary and open source information including subject matter expertise, survey data, and remote sensing information. These data are fused using data harmonization methods which refer to a loose collection of formal and informal techniques for fusing data together to create viable content for building occupancy estimation. In this paper, we add to the current state of the art<a href='#' onclick='$(this).hide().next().show().next().show();return false;' style='margin-left:10px;'>more&nbsp;&raquo;</a><span style='display:none;'> by introducing the Population Data Tables (PDT), a Bayesian based informatics system for systematically arranging data and harmonization techniques into a consistent, transparent, knowledge learning framework that retains in the final estimation uncertainty emerging from data, expert judgment, and model parameterization. PDT probabilistically estimates ambient occupancy in units of people/1000ft2 for over 50 building types at the national and sub-national level with the goal of providing global coverage. The challenge of global coverage led to the development of an interdisciplinary geospatial informatics system tool that provides the framework for capturing, storing, and managing open source data, handling subject matter expertise, carrying out Bayesian analytics as well as visualizing and exporting occupancy estimation results. We present the PDT project, situate the work within the larger community, and report on the progress of this multi-year project.Understanding building occupancy is critical to a wide array of applications including natural hazards loss analysis, green building technologies, and population distribution modeling. Due to the expense of directly monitoring buildings, scientists rely in addition on a wide and disparate array of ancillary and open source information including subject matter expertise, survey data, and remote sensing information. These data are fused using data harmonization methods which refer to a loose collection of formal and informal techniques for fusing data together to create viable content for building occupancy estimation. In this paper, we add to the current state of the art by introducing the Population Data Tables (PDT), a Bayesian model and informatics system for systematically arranging data and harmonization techniques into a consistent, transparent, knowledge learning framework that retains in the final estimation uncertainty emerging from data, expert judgment, and model parameterization. PDT probabilistically estimates ambient occupancy in units of people/1000 ft <sup>2</sup> for over 50 building types at the national and sub-national level with the goal of providing global coverage. The challenge of global coverage led to the development of an interdisciplinary geospatial informatics system tool that provides the framework for capturing, storing, and managing open source data, handling subject matter expertise, carrying out Bayesian analytics as well as visualizing and exporting occupancy estimation results. We present the PDT project, situate the work within the larger community, and report on the progress of this multi-year project.</span><a href='#' onclick='$(this).hide().prev().hide().prev().show();return false;' style='margin-left:10px;display:none;'>&laquo;&nbsp;less</a></div><div class="small clearfix" style="/* border-top:1px solid #eee; background-color:#f7f7f7; padding:8px; */ margin-top:15px;">
+                        <span class="fa fa-book text-muted" aria-hidden="true"></span> Cited by 2<a class="misc fulltext-link pull-right" href="/pages/servlets/purl/1237140" title="Link to document media" target="_blank" rel="noopener" data-ostiid="1237140" data-product-type="Journal Article" data-product-subtype="AM">Full Text Available</a>
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>		
+    <li>
+            <div class="article item document" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="position" content="2" /><div class="item-info">
+                    <div class="title">
+                        <a href="/pages/biblio/1478243-mining-data-dynamic-pra-framework" itemprop="url" ><span itemprop="name">Mining data in a dynamic PRA framework</span></a>
+                    </div>
+                    <div class="metadata">
+                        <small><small class="text-muted" style="text-transform:uppercase;display:block;line-height:2.5em;">Journal Article</small></small><span class="authors">
+                            <span class="author" itemprop="author">Mandelli, Diego</span>
+                            ; <span class="author" itemprop="author">Maljovec, Daniel</span>
+                            ; <span class="author" itemprop="author">Alfonsi, Andrea</span>
+                            ; <span class="author">...</span> <span class="text-muted" style="margin-left: 15px;"><time itemprop="datePublished" datetime="2018-05-26">May&nbsp;2018</time> - Progress in Nuclear Energy</span>
+                            </span>
+                    </div>
+                    <div class="abstract" itemprop="description">Computational (also known as Dynamic) Probabilistic Risk Assessment (PRA) methods employs system simulation codes coupled with stochastic analysis tools in order to determine probabilities of certain outcomes such as system failure. In contrast to classical PRA methods (i.e., Event-Tree and Fault-Tree) in which timing and sequencing of events is set by the analyst, accident progression is dictated by the system control logic and its interaction with system temporal evolution. Due to the nature of the problem, Simulation-Based PRA methods require large amount of computationally expensive simulation runs. In addition, these methods usually generate a large number of simulation runs (database<a href='#' onclick='$(this).hide().next().show().next().show();return false;' style='margin-left:10px;'>more&nbsp;&raquo;</a><span style='display:none;'> storage may be on the order of gigabytes or higher). In this paper we investigate and apply several methods and algorithms to analyze these large amounts of time-dependent data. Furthermore, the scope of this article is to present a broad overview of methods and algorithms that can be used to improve data quality and to analyze and extract information from large data sets containing time dependent data. In this context, “extracting information” means constructing input-output correlations, finding commonalities, and identifying outliers.</span><a href='#' onclick='$(this).hide().prev().hide().prev().show();return false;' style='margin-left:10px;display:none;'>&laquo;&nbsp;less</a></div><div class="small clearfix" style="/* border-top:1px solid #eee; background-color:#f7f7f7; padding:8px; */ margin-top:15px;">
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>		
+    <li>
+            <div class="article item document" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="position" content="3" /><div class="item-info">
+                    <div class="title">
+                        <a href="/pages/biblio/1265896-junction-tree-based-learning-algorithm-optimize-network-wide-traffic-control-coordinated-multi-agent-framework" itemprop="url" ><span itemprop="name">A junction-tree based learning algorithm to optimize network wide traffic control: A coordinated multi-agent framework</span></a>
+                    </div>
+                    <div class="metadata">
+                        <small><small class="text-muted" style="text-transform:uppercase;display:block;line-height:2.5em;">Journal Article</small></small><span class="authors">
+                            <span class="author" itemprop="author">Zhu, Feng</span>
+                            ; <span class="author" itemprop="author">Aziz, H. M.  Abdul</span>
+                            ; <span class="author" itemprop="author">Qian, Xinwu</span>
+                            ; <span class="author">...</span> <span class="text-muted" style="margin-left: 15px;"><time itemprop="datePublished" datetime="2015-01-31">January&nbsp;2015</time> - Transportation Research Part C: Emerging Technologies</span>
+                            </span>
+                    </div>
+                    <div class="abstract" itemprop="description">Our study develops a novel reinforcement learning algorithm for the challenging coordinated signal control problem. Traffic signals are modeled as intelligent agents interacting with the stochastic traffic environment. The model is built on the framework of coordinated reinforcement learning. The Junction Tree Algorithm (JTA) based reinforcement learning is proposed to obtain an exact inference of the best joint actions for all the coordinated intersections. Moreover, the algorithm is implemented and tested with a network containing 18 signalized intersections in VISSIM. Finally, our results show that the JTA based algorithm outperforms independent learning (Q-learning), real-time adaptive learning, and fixed timing plans<a href='#' onclick='$(this).hide().next().show().next().show();return false;' style='margin-left:10px;'>more&nbsp;&raquo;</a><span style='display:none;'> in terms of average delay, number of stops, and vehicular emissions at the network level.</span><a href='#' onclick='$(this).hide().prev().hide().prev().show();return false;' style='margin-left:10px;display:none;'>&laquo;&nbsp;less</a></div><div class="small clearfix" style="/* border-top:1px solid #eee; background-color:#f7f7f7; padding:8px; */ margin-top:15px;">
+                        <span class="fa fa-book text-muted" aria-hidden="true"></span> Cited by 4<a class="misc fulltext-link pull-right" href="/pages/servlets/purl/1265896" title="Link to document media" target="_blank" rel="noopener" data-ostiid="1265896" data-product-type="Journal Article" data-product-subtype="AM">Full Text Available</a>
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>		
+    <li>
+            <div class="article item document" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="position" content="4" /><div class="item-info">
+                    <div class="title">
+                        <a href="/pages/biblio/1368375-discovering-charge-density-functionals-structure-property-relationships-prophet-general-framework-coupling-machine-learning-first-principles-methods" itemprop="url" ><span itemprop="name">Discovering charge density functionals and structure-property relationships with PROPhet: A general framework for coupling machine learning and first-principles methods</span></a>
+                    </div>
+                    <div class="metadata">
+                        <small><small class="text-muted" style="text-transform:uppercase;display:block;line-height:2.5em;">Journal Article</small></small><span class="authors">
+                            <span class="author" itemprop="author">Kolb, Brian</span>
+                            ; <span class="author" itemprop="author">Lentz, Levi C.</span>
+                            ; <span class="author" itemprop="author">Kolpak, Alexie M.</span>
+                            <span class="text-muted" style="margin-left: 15px;"><time itemprop="datePublished" datetime="2017-04-26">April&nbsp;2017</time> - Scientific Reports</span>
+                            </span>
+                    </div>
+                    <div class="abstract" itemprop="description">Modern ab initio methods have rapidly increased our understanding of solid state materials properties, chemical reactions, and the quantum interactions between atoms. However, poor scaling often renders direct ab initio calculations intractable for large or complex systems. There are two obvious avenues through which to remedy this problem: (i) develop new, less expensive methods to calculate system properties, or (ii) make existing methods faster. This paper describes an open source framework designed to pursue both of these avenues. PROPhet (short for PROPerty Prophet) utilizes machine learning techniques to find complex, non-linear mappings between sets of material or system properties. The<a href='#' onclick='$(this).hide().next().show().next().show();return false;' style='margin-left:10px;'>more&nbsp;&raquo;</a><span style='display:none;'> result is a single code capable of learning analytical potentials, non-linear density functionals, and other structure-property or property-property relationships. These capabilities enable highly accurate mesoscopic simulations, facilitate computation of expensive properties, and enable the development of predictive models for systematic materials design and optimization. Here, this work explores the coupling of machine learning to ab initio methods through means both familiar (e.g., the creation of various potentials and energy functionals) and less familiar (e.g., the creation of density functionals for arbitrary properties), serving both to demonstrate PROPhet’s ability to create exciting post-processing analysis tools and to open the door to improving ab initio methods themselves with these powerful machine learning techniques.</span><a href='#' onclick='$(this).hide().prev().hide().prev().show();return false;' style='margin-left:10px;display:none;'>&laquo;&nbsp;less</a></div><div class="small clearfix" style="/* border-top:1px solid #eee; background-color:#f7f7f7; padding:8px; */ margin-top:15px;">
+                        <span class="fa fa-book text-muted" aria-hidden="true"></span> Cited by 3<a class="misc fulltext-link pull-right" href="/pages/servlets/purl/1368375" title="Link to document media" target="_blank" rel="noopener" data-ostiid="1368375" data-product-type="Journal Article" data-product-subtype="AM">Full Text Available</a>
+                        </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </li>		
+    </ul>
+                                </aside>
+                            </div>
+                        </section>
+                        </div>
+                </div>
+            </section>
+</div>
+                    </div>
+                                
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="footer-wrapper">
+    <div class="footer-content">
+        <div class="footer-extlink text-muted hidden-print">
+                <small>Some links on this page may take you to non-federal websites. Their policies may differ from this site.</small>
+                </div>
+        </div>
+	
+</div>
+</div>
+</div>
+
+
+<div class="push_top"></div>
+</div>
+
+<!-- /content -->
+
+<!-- footer -->
+<footer class="">
+  
+	<div class="footer-pre">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<script type="text/javascript">/* <![CDATA[ */ user = "pagescomments"; site = "osti.gov"; subject = "?subject=Comments or Suggestions"; content = "<span class='fa fa-comment-o' aria-hidden='true'></span> Have feedback or questions? Let us know!"; document.write('<a href="mailto:' + user + '@' + site + subject + '">' + (content != '' ? content : (user + '@' + site)) + '</a>'); /* ]]> */</script><noscript><a href="/pages/contact"><span class="fa fa-comment-o" aria-hidden="true"></span> Have feedback or questions? Let us know!</a></noscript>
+			</div>
+			<div class="col-md-6 text-right">
+				<a href="#top"><span class="fa fa-arrow-up" aria-hidden="true"></span> Back to top</a>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="footer-main" style="padding-top:15px; padding-bottom:5px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+                            
+<div class="pure-menu pure-menu-horizontal"> 
+<ul class="pure-menu-list"> 
+ <li class="pure-menu-item" style="border-right:0;"> <a href="https://energy.gov" target="_blank" rel="noopener noreferrer"> <img src="/pages/img/ui/footer-us-doe-frontpage-min.png" alt="U.S. Department of Energy"> </a> </li> 
+ <li class="pure-menu-item pure-menu-item-mid" style=""> <a href="https://science.energy.gov" target="_blank" rel="noopener noreferrer"> <img src="/pages/img/ui/footer-office-of-science-frontpage-min.png" alt="Office of Science"> </a> </li> 
+ <li class="pure-menu-item" style="border-right:0;"> <a href="https://www.osti.gov" target="_blank" rel="noopener noreferrer"> <img src="/pages/img/ui/footer-osti-frontpage-min.png" alt="Office of Scientific and Technical Information"> </a> </li> 
+</ul> 
+</div>                            
+                            
+			</div>
+		</div>
+			
+		<div class="row" style="margin-top: 15px;">
+			<div class="col-xs-12">
+				<div align="center">
+					<button class="footer-chevron collapsed" alt="Display additional footer links" data-toggle="collapse" data-target="#footer-tray">
+					</button>
+				</div>
+			</div>
+		</div>
+			
+	</div>
+	</div>
+
+	<div class="footer-tray collapse" id="footer-tray">
+	<div class="container" style="padding-top:20px;padding-bottom:20px;">
+		<div class="row">
+			<div class="col-md-4 text-left footer-links-l">
+				<ul>
+					<li class="nav-header"><span class="glyphicon glyphicon-menu-right" style="color:#ccc;" aria-hidden="true"></span> About DOE PAGES:</li>
+                                        <li><a href="//www.osti.gov/disclaim" target="_blank">Website Policies / Important Links  <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="/pages/api/v1/docs">API Documentation</a></li>
+					<li><a href="/pages/policy_communications">Policy / Communications</a></li>
+					<li><a href="/pages/sitemap">Site Map</a></li>
+					<li><a href="/pages/faq">FAQ</a></li>
+					<li><a href="/pages/contact">Contact Us</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 text-center footer-links-c">
+				<ul>
+					<li class="nav-header"><span class="glyphicon glyphicon-menu-right" style="color:#ccc;" aria-hidden="true"></span> About DOE / OSTI:</li>
+					<li><a href="https://www.osti.gov/mission" target="_blank" rel="noopener">Mission <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="https://www.osti.gov/stip/" target="_blank" rel="noopener">DOE STI Program <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="https://www.osti.gov/organization-chart" target="_blank" rel="noopener">Organization Chart <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="https://www.osti.gov/about" target="_blank" rel="noopener">About <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 text-right footer-links-r">
+				<ul>
+					<li class="nav-header"><span class="glyphicon glyphicon-menu-right" style="color:#ccc;" aria-hidden="true"></span> DOE Science Resources:</li>
+					<li><a href="//www.osti.gov/" target="_blank" rel="noopener">OSTI.GOV <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="//www.osti.gov/dataexplorer" target="_blank" rel="noopener">DOE Data Explorer <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="https://www.osti.gov/search-tools" target="_blank" rel="noopener">More DOE Collections &raquo; <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li class="nav-header"><span class="glyphicon glyphicon-menu-right" style="color:#ccc;" aria-hidden="true"></span> U.S. / Global Science Resources:</li>
+					<li><a href="//www.science.gov" target="_blank" rel="noopener">Science.gov <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+					<li><a href="//worldwidescience.org" target="_blank" rel="noopener">WorldWideScience.org <span class="fa fa-external-link" aria-hidden="true"></span></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>  
+			
+</footer>
+<!-- /footer -->
+
+<!-- scripts, load at the end for speed -->
+<link href="/pages/css/pages.190205.1357.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+		tex2jax: {displayMath: [], inlineMath: [['$$','$$'], ['\\(','\\)']]}, 
+		asciimath2jax: {delimiters: []}, 
+		skipStartupTypeset: true,
+		webFont: null
+	});
+</script><noscript></noscript>
+<script defer src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML'></script><noscript></noscript>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><noscript></noscript>
+<script src="/pages/js/pages.190205.1357.js"></script><noscript></noscript>
+<!-- /scripts -->
+<script type="text/javascript">
+                    var xhrSource = null;
+                    var xhrRefs = null;
+                    var xhrCites = null;
+                    
+
+                    $(document).ready(function(){
+                        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+                        $('#shareemail').on('show.bs.modal', function () {
+                                                                            $('#shareemail_submit').show(); }).on('shown.bs.modal', function () { $('#sendtoemail-email').focus();
+                                                                        }).on('hidden.bs.modal', function () {
+                                                                            $('#sendtoemail-email').val('');
+                                                                            $('#shareemail_submit').show();
+                                                                            $('div.modal-body-default').removeClass('hide');
+                                                                            $('div.modal-body-submitted').html('').addClass('hide');
+                                                                        });
+                                                                        $("#sendtoemail-form").submit(function(){
+                                                                            var $title = $("#citation-pagetitle").clone();
+                                                                            $title.find('div').remove();
+                                                                            var title = $.trim($title.text().trim().replace('Title: ',''));
+                                                                            var $citation = $("#citation-details").clone();
+                                                                            $citation.find('div.affiliation_toggle, ul.dropdown-menu, img.icon-orcid').remove();
+                                                                            var citation=$citation.html().replace(/(<\s*\/?\s*)a(\s*([^>]*)?\s*>)/gi ,'$1span$2'); // we need to remove author links here, they don't go in email output;
+                                                                            $("#sendtoemail-body").val(title + "<p><a href='https://www.osti.gov/pages/biblio/1253720'>https://www.osti.gov/pages/biblio/1253720</a></p>" + citation);
+                                                                            $("#sendtoemail-subject").val('DOE PAGES Document Details: '+title);
+                                                                            $.post("/pages/email.jsp", $("#sendtoemail-form").serialize(), function(data){
+                                                                                $('#shareemail_submit').hide();
+                                                                                $('div.modal-body-default').addClass('hide');
+                                                                                $('div.modal-body-submitted').html(data).removeClass('hide');
+                                                                            });
+                                                                            return false;
+                                                                        });
+                                                            $('#savedoc-btn-disabled, #tab-toggle-search-disabled').popover({
+                                                                container: 'body',
+                                                                html: true
+                                                            }).click(function(e){e.preventDefault();});
+                    });
+                </script><noscript></noscript></body>
+<!-- DOE PAGES v.190205.1357 -->
+</html>
